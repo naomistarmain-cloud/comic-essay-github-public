@@ -13,9 +13,6 @@
       --muted: #b9b1a5;
       --line: rgba(255, 255, 255, 0.16);
       --accent: #d8b46a;
-      --topbar-h: 58px;
-      --nav-h: 64px;
-      --page-gap: 16px;
     }
 
     * {
@@ -38,8 +35,8 @@
       align-items: center;
       justify-content: space-between;
       gap: 16px;
-      min-height: var(--topbar-h);
-      padding: calc(8px + env(safe-area-inset-top)) 16px 8px;
+      min-height: 54px;
+      padding: 10px 16px;
       background: linear-gradient(180deg, rgba(0, 0, 0, 0.86), rgba(0, 0, 0, 0.42), transparent);
       pointer-events: none;
     }
@@ -80,8 +77,7 @@
     }
 
     .viewer {
-      height: 100vh;
-      height: 100svh;
+      height: 100dvh;
       display: flex;
       flex-direction: row-reverse;
       gap: 0;
@@ -89,16 +85,14 @@
       overflow-y: hidden;
       scroll-snap-type: x mandatory;
       scroll-behavior: smooth;
-      padding: calc(var(--topbar-h) + env(safe-area-inset-top)) var(--page-gap) calc(var(--nav-h) + env(safe-area-inset-bottom));
+      padding: 64px 0 34px;
       scrollbar-color: var(--accent) #27221a;
       scrollbar-width: thin;
     }
 
     .page {
-      flex: 0 0 calc(100vw - var(--page-gap) * 2);
-      min-width: 0;
-      height: calc(100vh - var(--topbar-h) - var(--nav-h) - env(safe-area-inset-top) - env(safe-area-inset-bottom));
-      height: calc(100svh - var(--topbar-h) - var(--nav-h) - env(safe-area-inset-top) - env(safe-area-inset-bottom));
+      flex: 0 0 100%;
+      height: calc(100dvh - 112px);
       display: grid;
       place-items: center;
       scroll-snap-align: center;
@@ -107,7 +101,7 @@
 
     .page img {
       display: block;
-      max-width: min(100%, calc(100vw - var(--page-gap) * 2));
+      max-width: 100%;
       max-height: 100%;
       width: auto;
       height: auto;
@@ -120,7 +114,7 @@
 
     .nav {
       position: fixed;
-      inset: auto 0 calc(12px + env(safe-area-inset-bottom));
+      inset: auto 0 16px;
       z-index: 6;
       display: flex;
       justify-content: center;
@@ -142,12 +136,6 @@
     }
 
     @media (max-width: 640px) {
-      :root {
-        --topbar-h: 54px;
-        --nav-h: 58px;
-        --page-gap: 10px;
-      }
-
       .topbar {
         gap: 8px;
         padding-inline: 10px;
